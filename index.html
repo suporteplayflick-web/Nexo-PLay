@@ -9,19 +9,23 @@
     
     <style>
         :root {
-            --neon-green: #00e632; /* Verde vibrante do botão */
+            --neon-green: #00e632; 
             --dark-green: #008f1f;
-            --neon-red: #ff003c;   /* Vermelho dos destaques */
+            --neon-red: #ff003c;
             --bg-black: #050505;
             --card-bg: #111;
             --text-white: #ffffff;
             --text-gray: #b3b3b3;
         }
 
+        html {
+            scroll-behavior: smooth; /* Faz a rolagem ser suave ao clicar nos links */
+        }
+
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border_box;
+            box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
 
@@ -33,7 +37,7 @@
 
         /* --- Utilitários --- */
         .container {
-            max-width: 480px; /* Limita largura estilo mobile */
+            max-width: 580px; 
             margin: 0 auto;
             padding: 0 20px;
             position: relative;
@@ -44,6 +48,11 @@
         .green-text { color: var(--neon-green); }
         
         img { max-width: 100%; display: block; }
+
+        /* Ajuste para o header fixo não tampar o conteúdo ao clicar no link */
+        #agendar-teste, #plano-mensal, #plans {
+            scroll-margin-top: 100px;
+        }
 
         /* --- Botões --- */
         .btn-cta {
@@ -63,11 +72,20 @@
             border: none;
             cursor: pointer;
             transition: transform 0.2s;
+            max-width: 100%; 
         }
         
         .btn-cta:active { transform: scale(0.98); }
 
-        /* Botão específico para Agendar Teste (Azul ou outra cor para destaque, ou Verde mesmo) */
+        /* Estilo para botão outline (transparente com borda) usado no header */
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            box-shadow: none;
+        }
+
+        /* Botão específico para Agendar Teste */
         .btn-schedule {
             background: linear-gradient(180deg, #00d2ff 0%, #0078ff 100%);
             box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
@@ -76,7 +94,7 @@
 
         .btn-small {
             padding: 8px 15px;
-            font-size: 0.8rem;
+            font-size: 0.7rem; /* Levemente menor para caber dois botões */
             width: auto;
             margin: 0;
         }
@@ -99,13 +117,20 @@
         }
 
         .logo-area img { height: 35px; } 
+        
+        /* Container para os botões do header ficarem lado a lado */
+        .header-buttons {
+            display: flex;
+            gap: 8px;
+        }
 
         /* --- Hero Section --- */
         .hero {
             padding-top: 80px;
             position: relative;
             background: radial-gradient(circle at center, #2a0000 0%, #000 70%);
-            min-height: 80vh;
+            min-height: auto; 
+            padding-bottom: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -141,7 +166,7 @@
 
         /* --- Seção de Demonstração (Video) --- */
         .demo-section {
-            padding: 40px 20px;
+            padding: 20px 20px 40px 20px;
         }
         
         .section-title {
@@ -300,14 +325,12 @@
             background: #111;
             border: 2px solid var(--neon-red);
             border-radius: 20px;
-            padding: 0 0 20px 0;
+            padding: 0 0 30px 0;
             margin: 30px 0;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
         
-        /* Estilo especial para o card de agendamento */
         .plan-card.schedule-card {
             border-color: #00d2ff;
         }
@@ -327,6 +350,7 @@
             background: #1a0000;
             padding: 20px;
             border-bottom: 1px solid var(--neon-red);
+            border-radius: 18px 18px 0 0;
         }
         
         .plan-header h2 {
@@ -378,6 +402,14 @@
             margin-bottom: 10px;
         }
 
+        .btn-wrapper {
+            padding: 0 20px;
+            width: 100%;
+        }
+        .btn-wrapper .btn-cta {
+            margin-bottom: 0;
+        }
+
         /* --- MODAL (POP-UP) --- */
         .modal-overlay {
             position: fixed;
@@ -388,7 +420,7 @@
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(5px);
             z-index: 2000;
-            display: none; /* Escondido por padrão */
+            display: none;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -545,7 +577,10 @@
             <div class="logo-area">
                 <img src="mascote.png" alt="CineFlick Logo">
             </div>
-            <a href="#plans" class="btn-cta btn-small">ASSINE AGORA</a>
+            <div class="header-buttons">
+                <a href="#agendar-teste" class="btn-cta btn-small btn-outline">TESTE GRÁTIS</a>
+                <a href="#plano-mensal" class="btn-cta btn-small">ASSINE AGORA</a>
+            </div>
         </header>
 
         <section class="hero">
@@ -554,7 +589,9 @@
             <div class="hero-content">
                 <h1>Conteúdo ilimitado <br> por <span class="red-text">um valor que cabe no seu bolso!</span></h1>
                 <p>Tenha acesso a mais de 2 mil canais, incluindo Netflix, Disney+, HBO Max e mais, por um preço acessível! Com a Nexo Play, você economiza e assiste com qualidade, estabilidade e suporte dedicado.</p>
-                <a href="#plans" class="btn-cta">ADQUIRA O SEU TESTE AGORA</a>
+                <div style="padding-bottom: 10px;">
+                    <a href="#agendar-teste" class="btn-cta">ADQUIRA O SEU TESTE AGORA</a>
+                </div>
             </div>
         </section>
 
@@ -578,7 +615,7 @@
             <h3>Plano Mensal</h3>
             <p>O pacote completo de entretenimento: canais ao vivo, filmes, séries e os streamings que você mais gosta.</p>
             <div class="price-highlight">Por apenas R$ 24,90/mês</div>
-            <a href="#plans" class="btn-cta">ASSINE AGORA</a>
+            <a href="#plano-mensal" class="btn-cta">ASSINE AGORA</a>
         </div>
 
         <div class="text-center" style="padding: 20px;">
@@ -633,7 +670,7 @@
             </div>
 
              <div class="content-card">
-                <img src="https://placehold.co/400x200/220000/FFF?text=Canais+Adultos+(+18+)" alt="Adultos">
+                <img src="canaisadultos.png" alt="Adultos">
                 <div class="content-info">
                     <h3>Canais adultos</h3>
                     <p>Toda a lista de canais adultos protegido com senha para bloqueio e segurança das crianças.</p>
@@ -719,7 +756,7 @@
         <div id="plans" style="margin-top: 40px;">
             <h2 class="section-title text-center">Escolha seu plano e assine já!</h2>
 
-            <div class="plan-card schedule-card">
+            <div id="agendar-teste" class="plan-card schedule-card">
                 <div class="plan-header">
                     <h2>ESTÁ OCUPADO?</h2>
                     <h1>AGENDAR TESTE</h1>
@@ -735,12 +772,12 @@
                     <li><i class="fas fa-check-circle"></i> Programação Adultos [Opcional]</li>
                     <li><i class="fas fa-check-circle"></i> Pacote Filmes e Série</li>
                 </ul>
-                <div style="padding: 0 20px 20px 20px;">
+                <div class="btn-wrapper">
                     <button onclick="openScheduleModal()" class="btn-cta btn-schedule">MARCAR UM HORÁRIO PARA TESTAR</button>
                 </div>
             </div>
 
-            <div class="plan-card">
+            <div id="plano-mensal" class="plan-card">
                 <div class="plan-header">
                     <h2>PLANO</h2>
                     <h1>MENSAL</h1>
@@ -757,7 +794,7 @@
                     <li><i class="fas fa-check-circle"></i> Pacote Filmes e Série</li>
                 </ul>
                 <div class="plan-price">R$ 24,90</div>
-                <div style="padding: 0 20px;">
+                <div class="btn-wrapper">
                     <a href="https://wa.me/5531995513845?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20pacote%20MENSAL" class="btn-cta" target="_blank">COMPRAR AGORA</a>
                 </div>
             </div>
@@ -774,7 +811,7 @@
                 <div class="discount-tag"><i class="fas fa-gift"></i> 30% DE DESCONTO</div>
                 <p>De <strike>R$ 74,70</strike> por apenas:</p>
                 <div class="plan-price">R$ 69,90</div>
-                <div style="padding: 0 20px;">
+                <div class="btn-wrapper">
                     <a href="https://wa.me/5531995513845?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20pacote%20TRIMESTRAL" class="btn-cta" target="_blank">COMPRAR AGORA</a>
                 </div>
             </div>
@@ -791,7 +828,7 @@
                 <div class="discount-tag"><i class="fas fa-gift"></i> 40% DE DESCONTO</div>
                 <p>De <strike>R$ 149,40</strike> por apenas:</p>
                 <div class="plan-price">R$ 99,90</div>
-                <div style="padding: 0 20px;">
+                <div class="btn-wrapper">
                     <a href="https://wa.me/5531995513845?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20pacote%20SEMESTRAL" class="btn-cta" target="_blank">COMPRAR AGORA</a>
                 </div>
             </div>
@@ -808,19 +845,11 @@
                 <div class="discount-tag"><i class="fas fa-gift"></i> 46% DE DESCONTO</div>
                 <p>De <strike>R$ 298,80</strike> por apenas:</p>
                 <div class="plan-price">R$ 169,90</div>
-                <div style="padding: 0 20px;">
+                <div class="btn-wrapper">
                     <a href="https://wa.me/5531995513845?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20pacote%20ANUAL" class="btn-cta" target="_blank">COMPRAR AGORA</a>
                 </div>
             </div>
         </div>
-
-        <section class="guarantee-section">
-            <div class="stars">★★★★★</div>
-            <h2 class="red-text" style="font-weight: 900; font-size: 1.5rem;">Experimente sem riscos por 7 dias e só então decida se quer continuar</h2>
-            <p style="margin: 20px 0; font-size: 0.9rem;">Sem letras miúdas no contrato: você pode experimentar a Nexo Play e todos os conteúdos dela <strong>durante 7 dias</strong>.</p>
-            <p style="margin-bottom: 20px; font-size: 0.9rem;">Se dentro desse período você decidir não continuar, devolvemos todo seu dinheiro.</p>
-            <a href="#plans" class="btn-cta">ADQUIRA O SEU AGORA</a>
-        </section>
 
         <section style="padding: 20px;">
             <h2 class="section-title text-center">Ainda com dúvidas? Temos a resposta.</h2>
@@ -951,16 +980,9 @@
                 return;
             }
 
-            // Formata a mensagem exatamente como pedido: "desejo fazer um teste hoje as 16:30"
             const message = `Desejo fazer um teste ${day} as ${time}`;
-            
-            // Cria o link do WhatsApp
             const whatsappUrl = `https://wa.me/5531995513845?text=${encodeURIComponent(message)}`;
-            
-            // Abre em nova aba
             window.open(whatsappUrl, '_blank');
-            
-            // Fecha o modal
             closeScheduleModal();
         }
 
@@ -981,5 +1003,4 @@
         });
     </script>
 </body>
-
 </html>
