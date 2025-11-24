@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexo Play - Streaming</title>
+    
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1190660376358815');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1190660376358815&ev=PageView&noscript=1"
+    /></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -19,7 +35,7 @@
         }
 
         html {
-            scroll-behavior: smooth; /* Faz a rolagem ser suave ao clicar nos links */
+            scroll-behavior: smooth;
         }
 
         * {
@@ -49,7 +65,6 @@
         
         img { max-width: 100%; display: block; }
 
-        /* Ajuste para o header fixo não tampar o conteúdo ao clicar no link */
         #agendar-teste, #plano-mensal, #plans {
             scroll-margin-top: 100px;
         }
@@ -77,7 +92,6 @@
         
         .btn-cta:active { transform: scale(0.98); }
 
-        /* Estilo para botão outline (transparente com borda) usado no header */
         .btn-outline {
             background: transparent;
             border: 1px solid var(--neon-green);
@@ -85,7 +99,6 @@
             box-shadow: none;
         }
 
-        /* Botão específico para Agendar Teste */
         .btn-schedule {
             background: linear-gradient(180deg, #00d2ff 0%, #0078ff 100%);
             box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
@@ -94,7 +107,7 @@
 
         .btn-small {
             padding: 8px 15px;
-            font-size: 0.7rem; /* Levemente menor para caber dois botões */
+            font-size: 0.7rem;
             width: auto;
             margin: 0;
         }
@@ -118,7 +131,6 @@
 
         .logo-area img { height: 35px; } 
         
-        /* Container para os botões do header ficarem lado a lado */
         .header-buttons {
             display: flex;
             gap: 8px;
@@ -670,7 +682,7 @@
             </div>
 
              <div class="content-card">
-                <img src="canaisadultos.png" alt="Adultos">
+                <img src="https://placehold.co/400x200/220000/FFF?text=Canais+Adultos+(+18+)" alt="Adultos">
                 <div class="content-info">
                     <h3>Canais adultos</h3>
                     <p>Toda a lista de canais adultos protegido com senha para bloqueio e segurança das crianças.</p>
@@ -1004,5 +1016,3 @@
     </script>
 </body>
 </html>
-
-
